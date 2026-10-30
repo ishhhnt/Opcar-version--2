@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,185 +10,90 @@
         body { 
             margin: 0; 
             overflow: hidden; 
-            background: #050508; 
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+            background: #000; 
+            font-family: 'Arial', sans-serif; 
             touch-action: none;
             -webkit-user-select: none;
             user-select: none;
         }
 
-        /* ─── NEXT-GEN RACING HUD LOADING SCREEN ─── */
+        /* 🔥 PREMIUM LOADING SCREEN 🔥 */
         #loading-screen {
             position: fixed; 
             top: 0; 
             left: 0; 
             width: 100%; 
             height: 100%;
-            background: radial-gradient(circle at center, #111422 0%, #030408 100%);
+            background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
             display: flex; 
             flex-direction: column;
             justify-content: center; 
             align-items: center; 
-            z-index: 9999; 
-            color: #fff;
-            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.8s;
-            overflow: hidden;
+            z-index: 100; 
+            color: white;
+            transition: opacity 1s ease-in-out;
         }
-
-        /* Ambient Speed Lines & Glow */
-        #loading-screen::before {
-            content: '';
-            position: absolute;
-            width: 450px;
-            height: 450px;
-            background: radial-gradient(circle, rgba(0, 255, 136, 0.12) 0%, rgba(255, 0, 85, 0.05) 50%, transparent 70%);
-            border-radius: 50%;
-            filter: blur(50px);
-            animation: pulse-glow 3s ease-in-out infinite alternate;
-            pointer-events: none;
-        }
-
-        .loader-panel {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            max-width: 460px;
-            width: 88%;
-            padding: 35px 25px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 20px;
-            backdrop-filter: blur(16px);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.1);
-        }
-
-        .brand-badge {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.75rem;
-            letter-spacing: 3px;
-            color: #00ff88;
-            font-weight: 700;
-            text-transform: uppercase;
-            margin-bottom: 8px;
-        }
-        .brand-badge::before, .brand-badge::after {
-            content: '';
-            width: 18px;
-            height: 2px;
-            background: #00ff88;
-        }
-
-        .game-title {
-            font-size: 2.8rem;
+        #loading-screen h1 {
+            font-size: 2.5rem;
+            margin-bottom: 5px;
+            letter-spacing: 4px;
             font-weight: 900;
-            letter-spacing: 5px;
             color: #ffffff;
-            margin: 0;
             text-transform: uppercase;
-            text-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+            animation: pulse 2s infinite alternate;
         }
-        .game-title span {
-            color: #ff0055;
-            text-shadow: 0 0 20px rgba(255, 0, 85, 0.6);
-        }
-
-        /* Tachometer Gauge Visual */
-        .hud-meter {
-            position: relative;
-            width: 130px;
-            height: 130px;
-            margin: 25px 0 15px 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .hud-circle-bg {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            border: 2px dashed rgba(255, 255, 255, 0.15);
-            animation: rotate-slow 15s linear infinite;
-        }
-        .hud-circle-glow {
-            position: absolute;
-            width: 88%;
-            height: 88%;
-            border-radius: 50%;
-            border: 2px solid transparent;
-            border-top-color: #00ff88;
-            border-right-color: #ff0055;
-            animation: rotate-fast 1.4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        .subtitle {
+            font-size: 1rem;
+            color: #888;
+            letter-spacing: 2px;
+            margin-bottom: 40px;
+            text-transform: uppercase;
         }
         #loading-percentage {
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 2.2rem;
+            font-size: 4rem;
             font-weight: 900;
-            color: #ffffff;
-            text-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
+            color: #00ff64;
+            text-shadow: 0 0 30px rgba(0, 255, 100, 0.6);
+            margin: 10px 0;
+            font-family: 'Courier New', Courier, monospace;
         }
-
-        .status-text {
-            font-size: 0.82rem;
-            letter-spacing: 2px;
-            color: #8c93a8;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-            height: 18px;
-            font-weight: 600;
-        }
-
-        /* Futuristic Progress Bar */
-        .progress-frame {
-            width: 100%;
-            height: 6px;
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 6px;
+        #loading-bar-container {
+            width: 80%;
+            max-width: 600px;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
             overflow: hidden;
+            margin-bottom: 30px;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.8);
             position: relative;
         }
         #loading-bar {
             height: 100%;
+            background: linear-gradient(90deg, #ff0055, #00ff64);
             width: 0%;
-            background: linear-gradient(90deg, #ff0055 0%, #ff8800 50%, #00ff88 100%);
-            box-shadow: 0 0 15px #00ff88;
-            transition: width 0.3s ease-out;
-            border-radius: 6px;
+            transition: width 0.2s linear;
+            box-shadow: 0 0 15px #00ff64;
         }
-
-        .credit {
-            margin-top: 25px;
-            font-size: 0.75rem;
-            letter-spacing: 2.5px;
-            color: #5d6375;
-            text-transform: uppercase;
+        .made-by {
+            position: absolute;
+            bottom: 30px;
+            font-size: 0.9rem;
+            color: #555;
+            letter-spacing: 2px;
         }
-        .credit span {
+        .made-by span {
             color: #ff0055;
-            font-weight: 800;
-            text-shadow: 0 0 8px rgba(255, 0, 85, 0.4);
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(255, 0, 85, 0.5);
+        }
+        @keyframes pulse {
+            0% { opacity: 0.8; }
+            100% { opacity: 1; }
         }
 
-        @keyframes rotate-fast {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        @keyframes rotate-slow {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(-360deg); }
-        }
-        @keyframes pulse-glow {
-            0% { transform: scale(0.9); opacity: 0.6; }
-            100% { transform: scale(1.15); opacity: 1; }
-        }
-
-        /* ─── GAME UI ─── */
+        /* GAME UI */
         #ui { 
             position: absolute; 
             top: 15px; 
@@ -276,26 +182,15 @@
 </head>
 <body>
 
-    <!-- ─── NEW HIGH-TECH LOADING SCREEN ─── -->
+    <!-- 🔥 NAYA LOADING SCREEN 🔥 -->
     <div id="loading-screen">
-        <div class="loader-panel">
-            <div class="brand-badge">Engine Core</div>
-            <h1 class="game-title">PRIME <span>HD</span></h1>
-            
-            <div class="hud-meter">
-                <div class="hud-circle-bg"></div>
-                <div class="hud-circle-glow"></div>
-                <div id="loading-percentage">0%</div>
-            </div>
-
-            <div id="status-label" class="status-text">INITIALIZING ENGINE...</div>
-            
-            <div class="progress-frame">
-                <div id="loading-bar"></div>
-            </div>
-            
-            <div class="credit">MADE BY <span>ISHNT</span></div>
+        <h1>PRIME HD</h1>
+        <div class="subtitle">Loading World...</div>
+        <div id="loading-percentage">0%</div>
+        <div id="loading-bar-container">
+            <div id="loading-bar"></div>
         </div>
+        <div class="made-by">MADE BY <span>ISHNT</span></div>
     </div>
 
     <div id="ui">
@@ -351,9 +246,7 @@
         const totalModels = 3;
         
         let loadedAssets = 0;
-        const totalAssets = 12;
-
-        let isGameStarted = false;
+        let totalAssets = 12;
 
         const gearLimits = { "-1": -0.5, "0": 0, "1": 0.45, "2": 0.9, "3": 1.35, "4": 1.8, "5": 2.4, "6": 3.2 };
         const gearAccel = { "-1": 0.012, "1": 0.018, "2": 0.015, "3": 0.012, "4": 0.010, "5": 0.008, "6": 0.006 };
@@ -364,62 +257,13 @@
 
         init();
         
-        // Progress updater with auto-launch check
         function updateLoadingProgress() {
-            if (isGameStarted) return;
             const totalToLoad = totalAssets + totalModels;
             const totalLoaded = loadedAssets + loadedModels;
-            let percentage = Math.min(100, Math.floor((totalLoaded / totalToLoad) * 100));
-            
-            const percentageEl = document.getElementById('loading-percentage');
-            const barEl = document.getElementById('loading-bar');
-            const statusLabel = document.getElementById('status-label');
-
-            if (percentageEl) percentageEl.innerText = percentage + '%';
-            if (barEl) barEl.style.width = percentage + '%';
-
-            if (statusLabel) {
-                if (percentage < 35) statusLabel.innerText = "LOADING SECTOR TEXTURES...";
-                else if (percentage < 70) statusLabel.innerText = "IMPORTING 3D MODELS...";
-                else if (percentage < 100) statusLabel.innerText = "TUNING ENGINE & SHADERS...";
-                else statusLabel.innerText = "SYSTEMS ONLINE";
-            }
-
-            // Both textures and models complete check
-            if (totalLoaded >= totalToLoad) {
-                finishLoading();
-            }
+            const percentage = Math.floor((totalLoaded / totalToLoad) * 100);
+            document.getElementById('loading-percentage').innerText = percentage + '%';
+            document.getElementById('loading-bar').style.width = percentage + '%';
         }
-
-        function finishLoading() {
-            if (isGameStarted) return;
-            isGameStarted = true;
-
-            const percentageEl = document.getElementById('loading-percentage');
-            const barEl = document.getElementById('loading-bar');
-            const statusLabel = document.getElementById('status-label');
-            if (percentageEl) percentageEl.innerText = '100%';
-            if (barEl) barEl.style.width = '100%';
-            if (statusLabel) statusLabel.innerText = 'READY TO DRIVE!';
-
-            const loadingScreen = document.getElementById('loading-screen');
-            if (loadingScreen) {
-                loadingScreen.style.opacity = '0';
-                loadingScreen.style.pointerEvents = 'none';
-                setTimeout(() => {
-                    loadingScreen.style.display = 'none';
-                }, 800);
-            }
-            animate();
-        }
-
-        // Safety timeout: agar koi texture ya slow network asset atak jaye toh 6 sec me game force start ho jayega
-        setTimeout(() => {
-            if (!isGameStarted) {
-                console.warn("Safety trigger: forcing game start.");
-                finishLoading();
-            }
-        }, 6500);
 
         function init() {
             scene = new THREE.Scene();
@@ -489,7 +333,7 @@
             for(let i = 0; i < 10; i++) {
                 const group = new THREE.Group();
                 const type = i % 3;
-                const sharedMat = new THREE.MeshBasicMaterial({ map: textures[0] || null, side: THREE.DoubleSide });
+                const sharedMat = new THREE.MeshBasicMaterial({ map: textures[0], side: THREE.DoubleSide });
                 allBannerMaterials.push(sharedMat);
 
                 let bannerMesh;
@@ -516,10 +360,8 @@
             }
 
             setInterval(() => {
-                if(textures.length > 0) {
-                    const nextTex = textures[Math.floor(Math.random() * textures.length)];
-                    allBannerMaterials.forEach(m => m.map = nextTex);
-                }
+                const nextTex = textures[Math.floor(Math.random() * textures.length)];
+                allBannerMaterials.forEach(m => m.map = nextTex);
             }, 2000);
 
             const loader = new GLTFLoader();
@@ -530,22 +372,12 @@
                     car = gltf.scene;
                     car.position.set(0, 1.5, 0);
                     car.traverse(node => { 
-                        if(node.isMesh) { node.castShadow = true; node.receiveShadow = true; if(node.material) node.material.envMapIntensity = 4; }
+                        if(node.isMesh) { node.castShadow = true; node.receiveShadow = true; node.material.envMapIntensity = 4; }
                     });
                     scene.add(car);
-                    loadedModels++;
-                    updateLoadingProgress();
+                    checkAllLoaded();
                 }, undefined,
-                (error) => { 
-                    console.error('Car load error:', error);
-                    // Fallback car block if model fails to load
-                    const carBox = new THREE.Mesh(new THREE.BoxGeometry(3, 1.5, 6), new THREE.MeshStandardMaterial({ color: 0xff0055, roughness: 0.2, metalness: 0.8 }));
-                    carBox.position.set(0, 1.5, 0);
-                    scene.add(carBox);
-                    car = carBox;
-                    loadedModels++; 
-                    updateLoadingProgress(); 
-                }
+                (error) => { console.error('Car load error:', error); checkAllLoaded(); }
             );
 
             loader.load(
@@ -563,10 +395,9 @@
                         scene.add(houseClone);
                         houses.push(houseClone);
                     });
-                    loadedModels++;
-                    updateLoadingProgress();
+                    checkAllLoaded();
                 }, undefined,
-                (error) => { console.error('House 1 load error:', error); loadedModels++; updateLoadingProgress(); }
+                (error) => { console.error('House 1 load error:', error); checkAllLoaded(); }
             );
 
             loader.load(
@@ -584,16 +415,29 @@
                         scene.add(houseClone);
                         houses.push(houseClone);
                     });
-                    loadedModels++;
-                    updateLoadingProgress();
+                    checkAllLoaded();
                 }, undefined,
-                (error) => { console.error('House 2 load error:', error); loadedModels++; updateLoadingProgress(); }
+                (error) => { console.error('House 2 load error:', error); checkAllLoaded(); }
             );
 
             createRoadSystem();
             setupControls();
             setupTimeControls();
             window.addEventListener('resize', onWindowResize, false);
+        }
+
+        function checkAllLoaded() {
+            loadedModels++;
+            updateLoadingProgress();
+            if(loadedModels >= totalModels && loadedAssets >= totalAssets) {
+                // 🔥 LOADING SCREEN FADE OUT 🔥
+                const loadingScreen = document.getElementById('loading-screen');
+                loadingScreen.style.opacity = '0';
+                setTimeout(() => {
+                    loadingScreen.style.display = 'none';
+                    if(car) animate();
+                }, 1000); // 1 second ka smooth fade
+            }
         }
         
         function setSkyTime(mode) {
